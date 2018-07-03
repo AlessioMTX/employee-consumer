@@ -1,0 +1,21 @@
+server:
+    port: 8091
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://64.137.188.35:8761/eureka
+spring:
+    application:
+        name: employee-consumer
+    cloud:
+        stream:
+            kafka:
+                binder:
+                    brokers: 64.137.188.35:9092
+                bindings:
+                    greetings-in:
+                        destination: greetings
+                        contentType: application/json
+                    greetings-out:
+                        destination: greetings
+                        contentType: application/json
