@@ -10,7 +10,7 @@ import org.springframework.messaging.SubscribableChannel;
  * If you have any problem with this code please let me know at amitrotta@soldo.com
  */
 public interface GreetingsStream {
-    String INPUT = "greetings-in";
+    String INPUT = "greetings-out";
     String OUTPUT = "greetings-out";
 
     @Input(INPUT)

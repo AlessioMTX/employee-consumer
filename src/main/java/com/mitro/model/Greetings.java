@@ -5,6 +5,7 @@ package com.mitro.model;
  * If you have any problem with this code please let me know at amitrotta@soldo.com
  */
 public class Greetings {
+
     private long timestamp;
     private String message;
 
