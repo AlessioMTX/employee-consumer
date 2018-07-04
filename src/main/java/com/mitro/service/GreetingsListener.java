@@ -23,8 +23,4 @@ public class GreetingsListener {
         logger.info("Greetings output -> {}", greetings);
     }
 
-    @StreamListener(GreetingsStream.INPUT)
-    public void handleGreetingsOutput(@Payload Greetings greetings) {
-        logger.info("Greetings input -> {}", greetings);
-    }
 }
