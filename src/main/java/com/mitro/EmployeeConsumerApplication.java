@@ -19,6 +19,7 @@ import java.io.IOException;
 public class EmployeeConsumerApplication {
 
 	public static void main(String[] args) throws RestClientException, IOException {
+
 		ApplicationContext ctx = SpringApplication.run(EmployeeConsumerApplication.class, args);
 
 		ConsumerControllerClient consumerControllerClient=ctx.getBean(ConsumerControllerClient.class);
@@ -28,8 +29,7 @@ public class EmployeeConsumerApplication {
 	}
 
 	@Bean
-	public  ConsumerControllerClient  consumerControllerClient()
-	{
+	public  ConsumerControllerClient  consumerControllerClient() {
 		return  new ConsumerControllerClient();
 	}
 }
