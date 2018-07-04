@@ -18,13 +18,13 @@ public class GreetingsListener {
 
     Logger logger = LoggerFactory.getLogger(GreetingsListener.class);
 
-    @StreamListener(GreetingsStream.INPUT)
+    @StreamListener(GreetingsStream.OUTPUT)
     public void handleGreetingsInput(@Payload Greetings greetings) {
-        logger.info("Greetings input -> {}", greetings);
+        logger.info("Greetings output -> {}", greetings);
     }
 
-    @StreamListener(GreetingsStream.OUTPUT)
+    @StreamListener(GreetingsStream.INPUT)
     public void handleGreetingsOutput(@Payload Greetings greetings) {
-        logger.info("Greetings output -> {}", greetings);
+        logger.info("Greetings input -> {}", greetings);
     }
 }

@@ -24,7 +24,7 @@ public class GreetingsService {
     @Autowired
     GreetingsStream greetingsStream;
 
-    public void sendGreeting(final Greetings greetings) {
+    public void receiveGreetings(final Greetings greetings) {
         MessageChannel messageChannel = greetingsStream.outboundGreetings();
         messageChannel.send(MessageBuilder
                 .withPayload(greetings)
@@ -32,7 +32,7 @@ public class GreetingsService {
                 .build());
     }
 
-    public void receiveGreetings(final Greetings greetings) {
+    public void sendGreeting(final Greetings greetings) {
         SubscribableChannel subscribableChannel = greetingsStream.inboundGreetings();
         subscribableChannel.subscribe(message -> logger.info("receiveGreetings {}", message));
     }
