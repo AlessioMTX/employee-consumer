@@ -1,6 +1,7 @@
 package com.mitro;
 
 import com.mitro.controller.ConsumerControllerClient;
+import com.mitro.service.GreetingsService;
 import com.mitro.stream.GreetingsStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -23,13 +24,17 @@ public class EmployeeConsumerApplication {
 		ApplicationContext ctx = SpringApplication.run(EmployeeConsumerApplication.class, args);
 
 		ConsumerControllerClient consumerControllerClient=ctx.getBean(ConsumerControllerClient.class);
-		System.out.println(consumerControllerClient);
-		consumerControllerClient.getEmployee();
-		consumerControllerClient.getCiao();
+		GreetingsService greetingsService = ctx.getBean(GreetingsService.class);
+		greetingsService.receiveGreetings();
 	}
 
 	@Bean
 	public  ConsumerControllerClient  consumerControllerClient() {
 		return  new ConsumerControllerClient();
+	}
+
+	@Bean
+	public GreetingsService greetingsService() {
+		return new GreetingsService();
 	}
 }

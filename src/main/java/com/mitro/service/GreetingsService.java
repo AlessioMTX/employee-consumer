@@ -24,15 +24,7 @@ public class GreetingsService {
     @Autowired
     GreetingsStream greetingsStream;
 
-    public void receiveGreetings(final Greetings greetings) {
-        MessageChannel messageChannel = greetingsStream.outboundGreetings();
-        messageChannel.send(MessageBuilder
-                .withPayload(greetings)
-                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
-                .build());
-    }
-
-    public void sendGreeting(final Greetings greetings) {
+    public void receiveGreetings() {
         SubscribableChannel subscribableChannel = greetingsStream.inboundGreetings();
         subscribableChannel.subscribe(message -> logger.info("receiveGreetings {}", message));
     }
