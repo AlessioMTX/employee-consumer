@@ -20,7 +20,7 @@ public class GreetingsListener {
 
     @StreamListener(GreetingsStream.OUTPUT)
     public void handleGreetingsInput(@Payload Greetings greetings) {
-        logger.info("Greetings output -> {}", greetings);
+        logger.info("Greetings input -> {}", greetings);
     }
 
 }

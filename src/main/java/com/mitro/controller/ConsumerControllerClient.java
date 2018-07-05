@@ -1,6 +1,5 @@
 package com.mitro.controller;
 
-import com.mitro.service.GreetingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -26,8 +25,6 @@ public class ConsumerControllerClient {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @Autowired
-    GreetingsService greetingsService;
 
     public void getEmployee() throws RestClientException, IOException {
 
