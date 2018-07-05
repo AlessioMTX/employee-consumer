@@ -1,7 +1,6 @@
 package com.mitro.service;
 
 import com.mitro.model.Greetings;
-import com.mitro.stream.GreetingsStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -18,7 +17,7 @@ public class GreetingsListener {
 
     Logger logger = LoggerFactory.getLogger(GreetingsListener.class);
 
-    @StreamListener(GreetingsStream.OUTPUT)
+    @StreamListener("greetings-out")
     public void handleGreetingsInput(@Payload Greetings greetings) {
         logger.info("Greetings input -> {}", greetings);
     }
