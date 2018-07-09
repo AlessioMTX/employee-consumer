@@ -20,6 +20,8 @@ spring:
                     greetings-out:
                         destination: greetings
                         contentType: application/json
+                        consumer:
+                          enableDql: true
             bindings:
                 greetings-out:
                     consumer:
