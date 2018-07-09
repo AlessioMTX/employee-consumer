@@ -12,6 +12,7 @@ spring:
             kafka:
                 binder:
                     brokers: 64.137.188.35:9092
+                    auto-create-topics: true
                 bindings:
                     greetings-in:
                         destination: greetings
@@ -24,6 +25,8 @@ spring:
                     consumer:
                         enableDlq: true
                         dlqName: dead-out
+                        autoCommitOnError: true
+                        autoCommitOffset: true
     kafka:
       consumer:
         group-id: A

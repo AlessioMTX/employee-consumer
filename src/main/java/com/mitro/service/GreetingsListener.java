@@ -20,7 +20,7 @@ public class GreetingsListener {
     @StreamListener("greetings-out")
     public void handleGreetingsInput(@Payload Greetings greetings) throws Exception {
         logger.info("Greetings input -> {}", greetings);
-        if (greetings.getMessage().equals("ciao")) {
+        if (greetings.getMessage().equals("hello")) {
             throw new Exception("eer");
         }
     }
