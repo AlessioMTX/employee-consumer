@@ -10,6 +10,9 @@ spring:
     cloud:
         stream:
             kafka:
+                streams:
+                    binder:
+                        serdeError: sendToDlq
                 binder:
                     brokers: 64.137.188.35:9092
                     auto-create-topics: true
