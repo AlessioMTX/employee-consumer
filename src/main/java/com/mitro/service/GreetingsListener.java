@@ -18,8 +18,11 @@ public class GreetingsListener {
     Logger logger = LoggerFactory.getLogger(GreetingsListener.class);
 
     @StreamListener("greetings-out")
-    public void handleGreetingsInput(@Payload Greetings greetings) {
+    public void handleGreetingsInput(@Payload Greetings greetings) throws Exception {
         logger.info("Greetings input -> {}", greetings);
+        if (greetings.getMessage().equals("ciao")) {
+            throw new Exception("eer");
+        }
     }
 
 }
