@@ -19,10 +19,11 @@ spring:
                     greetings-out:
                         destination: greetings
                         contentType: application/json
-                        consumer:
-                          enableDlq: true
-                          dlqName: dead-queue
-                          group-id: dead
+            bindings:
+                greetings-out:
+                    consumer:
+                        enableDlq: true
+                        dlqName: dead-out
     kafka:
       consumer:
         group-id: A
