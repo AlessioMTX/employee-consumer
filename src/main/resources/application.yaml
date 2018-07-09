@@ -22,6 +22,7 @@ spring:
                         consumer:
                           enableDlq: true
                           dlqName: dead-queue
+                          group-id: dead
     kafka:
       consumer:
         group-id: A
