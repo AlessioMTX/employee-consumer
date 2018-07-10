@@ -17,11 +17,8 @@ spring:
                     brokers: 64.137.188.35:9092
                     auto-create-topics: true
                 bindings:
-                    greetings-in:
-                        destination: greetings
-                        contentType: application/json
                     greetings-out:
-                        destination: greetings
+                        destination: greetings-out
                         contentType: application/json
                         consumer:
                           enableDql: true
@@ -30,7 +27,7 @@ spring:
                           autoCommitOffset: true
             bindings:
                 greetings-out:
-                    destination: greetings
+                    destination: greetings-out
                     contentType: application/json
                     consumer:
                         enableDlq: true
