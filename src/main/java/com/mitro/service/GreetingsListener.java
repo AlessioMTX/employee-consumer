@@ -4,6 +4,8 @@ import com.mitro.model.Greetings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,11 @@ public class GreetingsListener {
         if (greetings.getMessage().equals("hello")) {
             throw new Exception("eer");
         }
+    }
+
+    @KafkaListener(id = "foo", topics = "dead-out")
+    public void dlq(Message<?> in) {
+        System.out.println("DLQ:" + in);
     }
 
 }

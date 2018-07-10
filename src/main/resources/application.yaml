@@ -5,37 +5,26 @@ eureka:
         serviceUrl:
             defaultZone: http://64.137.188.35:8761/eureka
 spring:
-    application:
-        name: employee-consumer
-    cloud:
-        stream:
-            kafka:
-                streams:
-                    binder:
-                        serdeError: sendToDlq
-                    bindings:
-                      greetings-out:
-                          consumer:
-                            enableDql: true
-                            dlqName: dead-out
-                            autoCommitOnError: true
-                            autoCommitOffset: true
-                binder:
-                    brokers: 64.137.188.35:9092
-                    auto-create-topics: true
-                bindings:
-                    greetings-out:
-                        consumer:
-                          enableDql: true
-                          dlqName: dead-out
-                          autoCommitOnError: true
-                          autoCommitOffset: true
-            bindings:
-                greetings-out:
-                    destination: greetings-out
-                    contentType: application/json
-    kafka:
-      consumer:
+  application:
+    name: employee-consumer
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          auto-create-topics: true
+        bindings:
+          input:
+            consumer:
+              enableDlq: true
+              dlqName: dead-out
+              autoCommitOnError: true
+              autoCommitOffset: true
+      bindings:
+        input:
+          group: so51247113
+          destination: greetings-out
+          contentType: application/json
+  kafka:
+     consumer:
         group-id: A
-
-spring.cloud.stream.kafka.bindings.greetings-out.consumer.enableDlq: true
