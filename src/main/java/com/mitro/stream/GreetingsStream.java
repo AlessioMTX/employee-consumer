@@ -11,6 +11,7 @@ import org.springframework.messaging.SubscribableChannel;
  */
 public interface GreetingsStream {
     String OUTPUT = "greetings-out";
+    String DEAD = "dead-out";
 
     @Input(OUTPUT)
     SubscribableChannel inboundGreetings();
