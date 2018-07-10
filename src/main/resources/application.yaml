@@ -13,6 +13,13 @@ spring:
                 streams:
                     binder:
                         serdeError: sendToDlq
+                    bindings:
+                      greetings-out:
+                          consumer:
+                            enableDql: true
+                            dlqName: dead-out
+                            autoCommitOnError: true
+                            autoCommitOffset: true
                 binder:
                     brokers: 64.137.188.35:9092
                     auto-create-topics: true
