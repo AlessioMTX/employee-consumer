@@ -7,7 +7,8 @@ eureka:
 spring:
     application:
         name: employee-consumer
-    cloud.stream:
+    cloud:
+        stream:
             kafka:
                 streams:
                     binder:
@@ -16,9 +17,14 @@ spring:
                     brokers: 64.137.188.35:9092
                     auto-create-topics: true
                 bindings:
+                    greetings-in:
+                        destination: greetings
+                        contentType: application/json
                     greetings-out:
+                        destination: greetings
+                        contentType: application/json
                         consumer:
-                          enableDlq: true
+                          enableDql: true
                           dlqName: dead-out
                           autoCommitOnError: true
                           autoCommitOffset: true
@@ -26,6 +32,11 @@ spring:
                 greetings-out:
                     destination: greetings
                     contentType: application/json
+                    consumer:
+                        enableDlq: true
+                        dlqName: dead-out
+                        autoCommitOnError: true
+                        autoCommitOffset: true
     kafka:
       consumer:
         group-id: A
