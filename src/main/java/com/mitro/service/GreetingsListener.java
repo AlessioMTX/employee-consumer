@@ -27,7 +27,7 @@ public class GreetingsListener {
         }
     }
 
-    @KafkaListener(topics = "dead-out")
+    @StreamListener("dead-out")
     public void dlq(Message<?> in) {
         System.out.println("DLQ:" + in);
     }
