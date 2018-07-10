@@ -7,7 +7,8 @@ eureka:
 spring:
     application:
         name: employee-consumer
-    cloud.stream.kafka:
+    cloud.stream:
+            kafka:
                 streams:
                     binder:
                         serdeError: sendToDlq
@@ -17,13 +18,15 @@ spring:
                 bindings:
                     greetings-out:
                         consumer:
-                          enableDql: true
+                          enableDlq: true
                           dlqName: dead-out
+                          autoCommitOnError: true
+                          autoCommitOffset: true
             bindings:
                 greetings-out:
-                    consumer:
                         destination: greetings
                         contentType: application/json
+
     kafka:
       consumer:
         group-id: A
