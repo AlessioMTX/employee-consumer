@@ -17,14 +17,7 @@ spring:
                     brokers: 64.137.188.35:9092
                     auto-create-topics: true
                 bindings:
-                    consumer:
-                         enableDql: true
-                         dlqName: dead-out
-                         autoCommitOnError: true
-                         autoCommitOffset: true
                     greetings-out:
-                        destination: greetings-out
-                        contentType: application/json
                         consumer:
                           enableDql: true
                           dlqName: dead-out
