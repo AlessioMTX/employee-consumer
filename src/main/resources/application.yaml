@@ -30,3 +30,5 @@ spring:
     kafka:
       consumer:
         group-id: A
+
+spring.cloud.stream.kafka.bindings.greetings-out.consumer.enableDlq: true
